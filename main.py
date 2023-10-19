@@ -1,15 +1,19 @@
-# Python script for the Python Demo Service
+import sdnotify
+import time
 
-if __name__ == '__main__':
-    import time
-    #import systemd.daemon
+print("Test starting up...")
+# In a real service, this is where you'd do real startup tasks
+# like opening listening sockets, connecting to a database, etc...
+time.sleep(10)
+print("Test startup finished")
 
-    print('Starting up ...')
-    time.sleep(10)
-    print('Startup complete')
-    # Tell systemd that our service is ready
-    # systemd.daemon.notify('READY=1')
+# Inform systemd that we've finished our startup sequence...
+n = sdnotify.SystemdNotifier()
+n.notify("READY=1")
 
-    while True:
-        print('Hello from the Python Demo Service')
-        time.sleep(5)
+count = 1
+while True:
+	print("Running... {}".format(count))
+	n.notify("STATUS=Count is {}".format(count))
+	count += 1
+	time.sleep(2)
