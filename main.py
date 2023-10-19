@@ -2,7 +2,7 @@
 
 if __name__ == '__main__':
     import time
-    import systemd.daemon
+    #import systemd.daemon
 
     print('Starting up ...')
     time.sleep(10)
