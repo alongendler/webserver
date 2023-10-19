@@ -8,7 +8,7 @@ if __name__ == '__main__':
     time.sleep(10)
     print('Startup complete')
     # Tell systemd that our service is ready
-    systemd.daemon.notify('READY=1')
+    # systemd.daemon.notify('READY=1')
 
     while True:
         print('Hello from the Python Demo Service')
